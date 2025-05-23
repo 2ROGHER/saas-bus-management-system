@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://usuario:password@cluster.mongodb.net/api_civa_buses_ms_db?retryWrites=true&w=majority
+      database: api_civa_buses_ms_db
+server:
+  port: 80
+logging:
+  level:
+    root: WARN

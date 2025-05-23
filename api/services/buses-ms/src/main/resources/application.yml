@@ -1,0 +1,61 @@
+# ===============================
+# = SERVIDOR (SERVER SETTINGS) =
+# ===============================
+server:
+  port: 8001
+  servlet:
+    context-path: /api/v1/buses # Ruta base de la API
+
+# ================================
+# = CONFIGURACIÓN DEL ENTORNO   =
+# ================================
+spring:
+  application:
+    name: buses-microservice
+
+  profiles:
+    active: dev # Puedes cambiar a "prod", "test", etc.
+
+  # ======================================
+  # = MONGODB DATABASE CONFIGURATION    =
+  # ======================================
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/api_civa_buses_ms_db?authSource=admin
+      database: api_civa_buses_ms_db
+
+# ================================
+# = LOGGING CONFIGURATION       =
+# ================================
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    com.yourcompany.buses: DEBUG # tu paquete base
+  file:
+    name: logs/buses-service.log # log a archivo local
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# ==================================
+# = ACTUATOR (monitorización)     =
+# ==================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      show-details: always
+
+# ============================
+# = CUSTOM CONFIG VALUES    =
+# ============================
+app:
+  version: 1.0.0
+  environment: development
+  company:
+  contact-email: rogers.mestanza@gmail.com
+
