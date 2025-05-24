@@ -1,5 +1,5 @@
 # ===============================
-# = SERVIDOR (SERVER SETTINGS) =
+# = SERVER   (SERVER SETTINGS) =
 # ===============================
 server:
   port: 8001
@@ -14,15 +14,15 @@ spring:
     name: buses-microservice
 
   profiles:
-    active: dev # Puedes cambiar a "prod", "test", etc.
+    active: dev # You can change it to "prod", "test", etc.
 
   # ======================================
   # = MONGODB DATABASE CONFIGURATION    =
   # ======================================
   data:
     mongodb:
-      uri: mongodb://localhost:27017/api_civa_buses_ms_db?authSource=admin
-      database: api_civa_buses_ms_db
+      uri: mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}
+      database: ${DB_NAME}
 
 # ================================
 # = LOGGING CONFIGURATION       =
@@ -31,9 +31,9 @@ logging:
   level:
     root: INFO
     org.springframework.web: DEBUG
-    com.yourcompany.buses: DEBUG # tu paquete base
+    com.yourcompany.buses: DEBUG # Base package
   file:
-    name: logs/buses-service.log # log a archivo local
+    name: logs/buses-service.log # log to local archive
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
